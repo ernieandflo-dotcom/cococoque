@@ -343,7 +343,7 @@ nav {
   position: absolute;
   inset: 12px;
   border-radius: 26px;
-  background: linear-gradient(135deg, #FF4500, #FF8C00, #FFD700);
+  background: linear-gradient(135deg, #FF4500, #1c1c1c, #000000);
   display: flex;
   align-items: center;
   justify-content: center;
