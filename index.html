@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coco Coque — Coques Personnalisées à Québec</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,800&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor"     id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast"></div>
+
+<!-- ════════════════════════════════
+     NAVIGATION
+════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">COCO COQUE</div>
+  <ul class="nav-links">
+    <li><a href="#customizer">Personnaliser</a></li>
+    <li><a href="#pricing">Tarifs</a></li>
+    <li><a href="#process">Comment ça marche</a></li>
+    <li><a href="#reviews">Avis</a></li>
+    <li><a href="#customizer" class="nav-cta">Commencer →</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════
+     HERO
+════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">🔥 Personnalisation locale et rapide à Québec</div>
+    <h1>
+      TA COQUE,<br>
+      <span class="fire-text">TON STYLE</span><br>
+      TON IDENTITÉ.
+    </h1>
+    <p>Service de personnalisation premium, rapide et local. Apporte ta coque — on la transforme en œuvre d'art unique en moins de 24h<e>**</e>.</p>
+    <div class="hero-actions">
+      <a href="#customizer" class="btn-primary">✦ Personnaliser maintenant</a>
+      <a href="#process"    class="btn-secondary">Comment ça marche</a>
+    </div>
+    <div class="hero-stats">
+      <!--
+      <div>
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Coques créées</span>
+      </div>
+      -->
+      <div>
+        <span class="stat-num">LOCAL</span>
+        <span class="stat-label">Québec</span>
+      </div>
+      <div>
+        <span class="stat-num">24H</span>
+        <span class="stat-label">Délai<e>**</e></span>
+      </div>
+      <div>
+        <span class="stat-num">4.9★</span>
+        <span class="stat-label">Satisfaction</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="phone-orbit">
+      <div class="orbit-ring">
+        <div class="orbit-dot"></div>
+      </div>
+      <div class="phone-body">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="phone-screen-pattern"></div>
+          <img src="assets/logoCCC_fr-rouge.png" alt="Coco Case" style="width:80%;object-fit:contain;">
+        </div>
+      </div>
+      <div class="floating-tag" style="top:40px;right:-10px">
+        <span class="tag-icon">⚡</span>
+        <span class="tag-text">Même journé <e>*</e></span>
+        <span class="tag-sub">Visite un détaillant</span>
+      </div>
+      <div class="floating-tag" style="bottom:80px;left:-30px">
+        <span class="tag-icon">🎨</span>
+        <span class="tag-text">100% Unique</span>
+        <span class="tag-sub">Design sur mesure</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     CUSTOMIZER
+════════════════════════════════ -->
+<section id="customizer">
+  <div class="customizer-wrapper">
+
+    <div class="customizer-header reveal">
+      <div class="section-label">Outil Principal</div>
+      <h2 class="section-title">PERSONNALISE TA COQUE</h2>
+      <p class="section-sub">Sélectionne ton modèle, télécharge ton design et visualise le résultat en temps réel. Soumets ta commande en ligne ou passe en magasin.</p>
+    </div>
+
+    <div class="customizer-layout reveal">
+
+      <!-- ── LEFT: Phone model selector ── -->
+      <div class="panel">
+        <div class="panel-title">📱 Modèle de téléphone</div>
+
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="modelSearch"
+                 placeholder="Rechercher un modèle..."
+                 oninput="filterModels(this.value)">
+        </div>
+
+        <div class="brand-tabs">
+          <button class="brand-tab active" onclick="selectBrand(this,'apple')">Apple</button>
+          <button class="brand-tab"        onclick="selectBrand(this,'samsung')">Samsung</button>
+          <button class="brand-tab"        onclick="selectBrand(this,'pixel')">Pixel</button>
+          <button class="brand-tab"        onclick="selectBrand(this,'other')">Autres</button>
+        </div>
+
+        <!-- Populated by customizer.js → renderModels() -->
+        <div class="model-list" id="modelList"></div>
+
+        <div class="order-summary">
+          <div class="summary-row">
+            <span>Modèle sélectionné</span>
+            <span id="selectedModelName" style="color:var(--text);font-weight:600">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Service personnalisation</span>
+            <span id="unitPrice" style="color:var(--ember);font-family:'DM Mono',monospace">34.99 $</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span class="price-highlight" id="totalPrice">34.99 $</span>
+          </div>
+          <button class="order-btn" onclick="addToCart()">COMMANDER →</button>
+        </div>
+      </div>
+
+      <!-- ── CENTER: 3-D preview ── -->
+      <div class="preview-center">
+        <div class="preview-toolbar">
+          <div class="preview-tools">
+            <button class="tool-btn active" title="Rotation"     onclick="setTool(this)">↻</button>
+            <button class="tool-btn"        title="Zoom avant"   onclick="zoomIn()">+</button>
+            <button class="tool-btn"        title="Zoom arrière" onclick="zoomOut()">−</button>
+            <button class="tool-btn"        title="Réinitialiser" onclick="resetView()">⊡</button>
+          </div>
+          <div class="view-toggle">
+            <button class="view-btn active" onclick="setView(this,'back')">DOS</button>
+            <button class="view-btn"        onclick="setView(this,'front')">FACE</button>
+            <button class="view-btn"        onclick="setView(this,'3d')">3D</button>
+          </div>
+          <div class="zoom-control">
+            <span id="zoomLevel">100%</span>
+          </div>
+        </div>
+
+        <div class="preview-canvas" id="previewCanvas">
+          <div class="phone-3d-container" id="phone3dContainer">
+            <div class="phone-3d" id="phone3d">
+              <div class="phone-face">
+                <div class="phone-notch-3d"></div>
+                <div class="phone-design-area" id="designArea">
+                  <div class="phone-design-placeholder" id="designPlaceholder">
+                    <div class="upload-icon">🖼️</div>
+                    <p>Télécharge ton design<br>pour voir l'aperçu</p>
+                  </div>
+                  <img id="designImg" class="phone-design-img" src="" alt="Ton design">
+                  <div id="textOverlay"
+                       style="position:absolute;font-weight:700;font-size:20px;
+                              color:white;text-shadow:0 2px 8px rgba(0,0,0,0.5);
+                              text-align:center;padding:16px;
+                              opacity:0;transition:opacity 0.4s;pointer-events:none;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="canvas-hint">
+            <div class="drag-indicator">⟳</div>
+            <span>Glisse pour faire pivoter</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── RIGHT: Edit tools ── -->
+      <div class="panel">
+        <div class="panel-title">🎨 Outils d'édition</div>
+
+        <!-- Image upload -->
+        <div>
+          <div class="tool-group-title">Image / Photo</div>
+          <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+            <div class="upload-icon-large">📁</div>
+            <p><span>Cliquer pour télécharger</span><br>JPG, PNG, HEIC — max 20MB</p>
+          </div>
+          <input type="file" class="hidden-input" id="fileInput"
+                 accept="image/*" onchange="handleUpload(this)">
+          <div class="design-preview-thumb" id="designThumb">
+            <img id="thumbImg" src="" alt="Aperçu">
+          </div>
+        </div>
+
+        <!-- Gradient presets — populated by customizer.js -->
+        <div>
+          <div class="tool-group-title">Dégradés & Couleurs</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;" id="gradientPresets"></div>
+        </div>
+
+        <!-- Custom text -->
+        <div>
+          <div class="tool-group-title">Texte personnalisé</div>
+          <div class="text-input-group">
+            <input type="text" id="customText"
+                   placeholder="Ton texte..."
+                   oninput="updateText(this.value)"
+                   maxlength="30">
+            <select id="fontStyle" onchange="updateTextStyle()">
+              <option value="'Bebas Neue',sans-serif">Bebas Neue — IMPACT</option>
+              <option value="'Bricolage Grotesque',sans-serif">Bricolage Grotesque</option>
+              <option value="'DM Mono',monospace">DM Mono — code</option>
+              <option value="Georgia,serif">Georgia — élégant</option>
+              <option value="cursive">Cursif — romantique</option>
+            </select>
+          </div>
+          <!-- Text colour swatches — populated by customizer.js -->
+          <div class="color-swatches" style="margin-top:10px" id="textColorSwatches"></div>
+        </div>
+
+        <!-- Filters — populated by customizer.js -->
+        <div>
+          <div class="tool-group-title">Effets & Filtres</div>
+          <div class="filter-row" id="filterChips"></div>
+        </div>
+
+        <!-- Adjustment sliders -->
+        <div>
+          <div class="tool-group-title">Ajustements</div>
+          <div class="slider-group">
+            <div class="slider-label">
+              <span>Luminosité</span>
+              <span id="brightnessVal">100%</span>
+            </div>
+            <input type="range" min="50" max="150" value="100"
+                   id="brightnessSlider" oninput="adjustImage()">
+          </div>
+          <div class="slider-group" style="margin-top:12px">
+            <div class="slider-label">
+              <span>Saturation</span>
+              <span id="saturationVal">100%</span>
+            </div>
+            <input type="range" min="0" max="200" value="100"
+                   id="saturationSlider" oninput="adjustImage()">
+          </div>
+        </div>
+
+      </div><!-- /right panel -->
+    </div><!-- /customizer-layout -->
+  </div><!-- /customizer-wrapper -->
+</section>
+
+<!-- ════════════════════════════════
+     PRICING
+════════════════════════════════ -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-header reveal">
+    <div class="section-label">Tarification</div>
+    <h2 class="section-title">TARIFS TRANSPARENTS</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center">
+      Plus tu en commandes, plus tu économises. Idéal pour les équipes, les cadeaux corporatifs et les événements.
+    </p>
+  </div>
+  <div class="pricing-grid reveal">
+    <div class="price-card">
+      <div class="price-qty">1 coque</div>
+      <div class="price-amount">34<span class="price-unit">.99 $</span></div>
+      <div class="price-desc">Parfait pour une pièce unique. Cadeau personnel, couple, souvenir.</div>
+      <div class="price-margin">📊 Marge ~71%</div>
+    </div>
+    <div class="price-card featured">
+      <div class="badge-popular">⚡ Populaire</div>
+      <div class="price-qty">2 coques</div>
+      <div class="price-amount">29<span class="price-unit">.99 $</span></div>
+      <div class="price-desc">Idéal pour les couples ou offrir à un proche en même temps.</div>
+      <div class="price-margin">📊 Marge ~67%</div>
+    </div>
+    <div class="price-card">
+      <div class="price-qty">3+ coques</div>
+      <div class="price-amount">28<span class="price-unit">.49 $</span></div>
+      <div class="price-desc">Pour les familles, groupes d'amis ou petites équipes.</div>
+      <div class="price-margin">📊 Marge ~65%</div>
+    </div>
+    <div class="price-card">
+      <div class="price-qty">15+ coques</div>
+      <div class="price-amount">25<span class="price-unit">.49 $</span></div>
+      <div class="price-desc">Entreprises, équipes sportives, événements & cadeaux corporatifs.</div>
+      <div class="price-margin">📊 Marge ~61%</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FEATURES
+════════════════════════════════ -->
+<section class="features-section" id="features">
+  <div class="reveal">
+    <div class="section-label">Nos avantages</div>
+    <h2 class="section-title">POURQUOI COCO COQUE ?</h2>
+  </div>
+  <div class="features-grid reveal">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">RAPIDITÉ LOCALE</div>
+      <div class="feature-desc">Rendez-vous chez un détaillant en moins de 24 heures pour les commandes passées du lundi au jeudi avant 17h. Pas de délai postal, pas d'incertitude.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <div class="feature-title">QUALITÉ PREMIUM</div>
+      <div class="feature-desc">Impression haute résolution avec encres résistantes UV. Couleurs éclatantes qui durent dans le temps. Fini mat ou brillant disponible.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💼</div>
+      <div class="feature-title">POUR LES ÉQUIPES</div>
+      <div class="feature-desc">Commandes corporatives à partir de 15 unités avec tarif dégressif. PME, équipes sportives, événements, cadeaux d'entreprise.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">APPORTE TA COQUE</div>
+      <div class="feature-desc">Tu apportes ta coque existante, on s'occupe du reste. Aucune contrainte de modèle ou de marque. Service flexible et économique.</div>
+    </div>
+    <!--
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <div class="feature-title">SATISFACTION GARANTIE</div>
+      <div class="feature-desc">Pas content ? On refait gratuitement. Notre priorité, c'est que tu sois fier de ta coque à chaque regard sur ton téléphone.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌿</div>
+      <div class="feature-title">ÉCO-RESPONSABLE</div>
+      <div class="feature-desc">Encres à base d'eau, zéro gaspillage. En personnalisant ta coque existante, tu évites le remplacement inutile et tu réduis tes déchets.</div>
+    </div>
+  -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     PROCESS
+════════════════════════════════ -->
+<section class="process-section" id="process">
+  <div class="reveal" style="text-align:center">
+    <div class="section-label" style="justify-content:center"><span></span>Comment ça marche</div>
+    <h2 class="section-title">SIMPLE COMME BONJOUR</h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center">
+      Quatre étapes pour avoir la coque de tes rêves. Rapide, simple, local.
+    </p>
+  </div>
+  <div class="process-steps reveal">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-title">Choisis ton modèle</div>
+      <div class="step-desc">Utilise notre outil en ligne pour sélectionner ton téléphone et visualiser le résultat.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-title">Télécharge ton design</div>
+      <div class="step-desc">Photo, illustration, logo — n'importe quelle image en haute résolution.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-title">Visite un de nos détaillants</div>
+      <div class="step-desc">Apporte ta coque et confirme ton design en personne avec notre équipe.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-title">Récupère sous 24h</div>
+      <div class="step-desc">Ta coque personnalisée, imprimée et prête à la porter. C'est tout !</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     REVIEWS
+════════════════════════════════ -->
+<section class="reviews-section" id="reviews">
+  <div class="reveal" style="text-align:center">
+    <div class="section-label" style="justify-content:center"><span></span>Témoignages</div>
+    <h2 class="section-title">ILS ADORENT LEUR COQUE</h2>
+  </div>
+  <div class="reviews-grid reveal">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"J'ai apporté une photo de famille et le résultat est absolument magnifique. Les couleurs sont exactement comme sur la photo, c'est bluffant."</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background:linear-gradient(135deg,#FF4500,#FF8C00)">ML</div>
+        <div>
+          <div class="reviewer-name">Marie-Lou B.</div>
+          <div class="reviewer-location">Québec, QC</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"On a commandé 20 coques avec le logo de notre équipe de hockey. Livraison rapide, qualité impressionnante pour le prix. Tout le monde était content !"</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background:linear-gradient(135deg,#0066FF,#00CFFF)">JP</div>
+        <div>
+          <div class="reviewer-name">Jean-Philippe T.</div>
+          <div class="reviewer-location">Lévis, QC</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">"Service professionnel, rapide et vraiment à l'écoute. J'avais des doutes sur mon design et l'équipe m'a aidée à l'améliorer. Je recommande à 100%."</div>
+      <div class="reviewer">
+        <div class="reviewer-avatar" style="background:linear-gradient(135deg,#A855F7,#EC4899)">SC</div>
+        <div>
+          <div class="reviewer-name">Sophie C.</div>
+          <div class="reviewer-location">Québec, QC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">COCO COQUE</div>
+      <div class="footer-desc">Service de personnalisation de coques de téléphone premium, rapide et local. Basé à Québec, au service de toute la région.</div>
+      <div class="location-badge" style="margin-top:20px;display:inline-flex">
+        📍 Québec, Canada
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#">Personnalisation individuelle</a></li>
+        <li><a href="#">Commandes corporatives</a></li>
+        <li><a href="#">Équipes & sports</a></li>
+        <li><a href="#">Cadeaux entreprise</a></li>
+        <li><a href="#">Événements</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Info</div>
+      <ul class="footer-links">
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Tarifs</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Nous trouver</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Légal</div>
+      <ul class="footer-links">
+        <li><a href="#">Conditions d'utilisation</a></li>
+        <li><a href="#">Politique de confidentialité</a></li>
+        <li><a href="#">Politique de remboursement</a></li>
+        <li><a href="#">Droits d'auteur</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Coco Coque. Tous droits réservés.</span>
+    <span>Conçu et fabriqué à Québec, QC, Canada 🇨🇦</span>
+    <span>Made with 🔥 by Coco Coque</span>
+  </div>
+</footer>
+
+<!-- Scripts — data.js must load before customizer.js -->
+<script src="js/data.js"></script>
+<script src="js/customizer.js"></script>
+</body>
+</html>
