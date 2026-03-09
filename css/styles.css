@@ -439,7 +439,7 @@ section { padding: 100px 60px; }
 /* ── 6. CUSTOMIZER ── */
 #customizer {
   background: var(--dark);
-  padding: 100px 40px;
+  padding: 100px 60px;
 }
 .customizer-wrapper {
   max-width: 1280px;
@@ -1007,7 +1007,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-top: 60px;
 }
@@ -1397,7 +1397,7 @@ footer {
   .floating-tag:nth-child(2) { bottom: 40px; left: -12px; }
 
   /* Customizer — stack vertically */
-  #customizer { padding: 72px 16px; }
+  #customizer { padding: 72px 20px; }
   .customizer-layout {
     grid-template-columns: 1fr;
     min-height: auto;
