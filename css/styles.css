@@ -1441,12 +1441,12 @@ footer {
   .process-steps {
     grid-template-columns: 1fr;
     gap: 0;
-    padding-left: 32px;
+    padding-left: 0;
   }
   /* Replace horizontal line with vertical line */
   .process-steps::before {
     top: 32px;
-    left: 31px;
+    left: 25px;
     right: auto;
     width: 2px;
     height: calc(100% - 64px);
@@ -1454,7 +1454,7 @@ footer {
   }
   .process-step {
     text-align: left;
-    padding: 0 0 40px 28px;
+    padding: 0 0 40px 72px;
     display: flex;
     flex-direction: column;
   }
