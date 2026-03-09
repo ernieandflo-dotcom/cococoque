@@ -27,13 +27,18 @@
 ════════════════════════════════ -->
 <nav>
   <div class="nav-logo">COCO COQUE</div>
-  <ul class="nav-links">
-    <li><a href="#customizer">Personnaliser</a></li>
-    <li><a href="#pricing">Tarifs</a></li>
-    <li><a href="#process">Comment ça marche</a></li>
-    <li><a href="#reviews">Avis</a></li>
-    <li><a href="#customizer" class="nav-cta">Commencer →</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#customizer" onclick="closeMenu()">Personnaliser</a></li>
+    <li><a href="#pricing"    onclick="closeMenu()">Tarifs</a></li>
+    <li><a href="#process"   onclick="closeMenu()">Comment ça marche</a></li>
+    <li><a href="#reviews"   onclick="closeMenu()">Avis</a></li>
+    <li><a href="#customizer" class="nav-cta" onclick="closeMenu()">Commencer →</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- ════════════════════════════════
@@ -50,7 +55,7 @@
       <span class="fire-text">TON STYLE</span><br>
       TON IDENTITÉ.
     </h1>
-    <p>Service de personnalisation premium, rapide et local. Apporte ta coque — on la transforme en œuvre d'art unique en moins de 24h<e>**</e>.</p>
+    <p>Service de personnalisation premium, rapide et local. Apporte ta coque — on la transforme en œuvre d'art unique en moins de 24h<e>*</e>.</p>
     <div class="hero-actions">
       <a href="#customizer" class="btn-primary">✦ Personnaliser maintenant</a>
       <a href="#process"    class="btn-secondary">Comment ça marche</a>
@@ -68,7 +73,7 @@
       </div>
       <div>
         <span class="stat-num">24H</span>
-        <span class="stat-label">Délai<e>**</e></span>
+        <span class="stat-label">Délai<e>*</e></span>
       </div>
       <div>
         <span class="stat-num">4.9★</span>
@@ -358,7 +363,7 @@
       <div class="feature-title">ÉCO-RESPONSABLE</div>
       <div class="feature-desc">Encres à base d'eau, zéro gaspillage. En personnalisant ta coque existante, tu évites le remplacement inutile et tu réduis tes déchets.</div>
     </div>
-  -->
+    -->
   </div>
 </section>
 
@@ -391,8 +396,8 @@
     </div>
     <div class="process-step">
       <div class="step-num">04</div>
-      <div class="step-title">Récupère sous 24h</div>
-      <div class="step-desc">Ta coque personnalisée, imprimée et prête à la porter. C'est tout !</div>
+      <div class="step-title">Récupère ta coque la même journée <e>*</e></div>
+      <div class="step-desc">Ta coque personnalisée, imprimée et prête à utiliser la même<e>*</e>. C'est tout !</div>
     </div>
   </div>
 </section>
@@ -485,9 +490,9 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Coco Coque. Tous droits réservés.</span>
-    <span>Conçu et fabriqué à Québec, QC, Canada 🇨🇦</span>
-    <span>Made with 🔥 by Coco Coque</span>
+    <span>© 2026 Coco Coque. Tous droits réservés.</span>
+    <span>Conçu et fabriqué à Québec, QC, Canada</span>
+    <span>📱</span>
   </div>
 </footer>
 
