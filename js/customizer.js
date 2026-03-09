@@ -360,3 +360,30 @@ function setTool(btn) {
    INIT
 ───────────────────────────────────────── */
 renderModels('apple');
+
+
+/* ─────────────────────────────────────────
+   MOBILE NAV — HAMBURGER
+───────────────────────────────────────── */
+function toggleMenu() {
+  const nav  = document.getElementById('navLinks');
+  const btn  = document.getElementById('hamburger');
+  const open = nav.classList.toggle('mobile-open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+}
+
+function closeMenu() {
+  document.getElementById('navLinks').classList.remove('mobile-open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// Close menu on outside tap
+document.addEventListener('click', e => {
+  const nav = document.getElementById('navLinks');
+  const btn = document.getElementById('hamburger');
+  if (nav.classList.contains('mobile-open') &&
+      !nav.contains(e.target) && !btn.contains(e.target)) {
+    closeMenu();
+  }
+});
